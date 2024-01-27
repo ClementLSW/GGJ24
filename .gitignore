@@ -73,3 +73,5 @@ crashlytics-build.properties
 /MakeMeLaugh/Library/*
 /MakeMeLaugh/Logs/*
 /MakeMeLaugh/UserSettings/*
+/MakeMeLaugh/Temp/*
+/MakeMeLauge/Obj/*
