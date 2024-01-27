@@ -31,10 +31,16 @@ public class yeet : MonoBehaviour
         if (canYeet)
         {
             yeetAngle = arrow.GetAngle();
-            yeetForce = Random.Range(1.0f, 10.0f) ; // TODO: Change to actually getting a value based on Minigames;
+            // yeetForce = Random.Range(1.0f, 10.0f) ; // TODO: Change to actually getting a value based on Minigames;
             YEET();
         }
     }
+
+    private void SetYeetForce(float val)
+    {
+        yeetForce = val;
+    }
+
     public void YEET()
     {
         Vector2 yeetDir = new Vector2(
