@@ -13,6 +13,7 @@ public class Arrow : MonoBehaviour
 
     float dir = 1.0f;
     public GameObject potat;
+    public GameMaster gameMaster;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class Arrow : MonoBehaviour
             { 
                 swing = false;
                 potat.GetComponent<yeet>().canYeet = true;
+                gameMaster.IncrementKicks();
             }else if (Input.GetKeyDown(KeyCode.R))
             {
                 Reset();

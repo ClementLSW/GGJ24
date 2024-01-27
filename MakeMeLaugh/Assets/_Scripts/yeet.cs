@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class yeet : MonoBehaviour
 {
+    private Vector3 origin;
     public bool canYeet = false;
     public bool hasYeeted = false;
     public float yeetAngle;
@@ -21,6 +22,7 @@ public class yeet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         arrow = FindObjectOfType<Arrow>();
         tilemap = FindObjectOfType<Tilemap>();
+        origin = transform.position;
     }
 
     // Update is called once per frame
@@ -47,6 +49,18 @@ public class yeet : MonoBehaviour
 
         canYeet = false;
         hasYeeted = true;
+    }
+
+    public void ResetPotat()
+    {
+        gameObject.transform.position = origin;
+        hasYeeted = false;
+        canYeet = false;
+        yeetAngle = 0.0f;
+        yeetForce = 0.0f;
+        bouncesLeft = 3;
+        arrow.Reset();
+        gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
