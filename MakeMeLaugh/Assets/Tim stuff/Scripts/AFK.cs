@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class Mashing : MonoBehaviour
+public class AFK : MonoBehaviour
 {
-    public KeyCode inputKey;
-    public KeyCode inputKey2;
-
     public float maxTimer;  //max timer
     public float timer;     //The actual timer
     public bool timerActive = false;  //Timer toggle
 
-    public float power; //The bar
-    public float powerInput;    //Power per press
-    public float powerDecrease;     //Powere decrease over time
+    public float power;     
     public float submittedPower;    //Power to pass to the main game
+    public float powerDecrease;     //Power to remove if anything is pressed
 
     public string instructions; //Instructions to display to the player
 
@@ -30,19 +25,14 @@ public class Mashing : MonoBehaviour
     void Update()
     {
         if (timerActive)
-        {
-            if (timer > 0)
+        { 
+            if (timer > 0) 
             { 
                 timer -= Time.deltaTime;
 
-                if (power > 0)
+                if (power < 0)
                 {
-                    power -= powerDecrease;
-                    
-                    if (power < 0)
-                    {
-                        power = 0;
-                    }
+                    power = 0;
                 }
             }
 
@@ -53,9 +43,9 @@ public class Mashing : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(inputKey) || Input.GetKeyDown(inputKey2)) && timerActive)
+        if (Input.anyKeyDown)
         {
-            power += powerInput;
+            power -= powerDecrease;
         }
     }
 }
