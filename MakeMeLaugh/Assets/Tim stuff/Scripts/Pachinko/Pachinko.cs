@@ -50,7 +50,6 @@ public class Pachinko : MonoBehaviour
             if (timer <= 0)
             {
                 movementActive = false;
-                submittedPower = power;     //Determine the power to pass
                 timerActive = false;    //turn off timer
                 potato.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 timeoutTimer = maxTimeoutTimer;
