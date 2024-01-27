@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour
     float minTheta = 0.0f;
 
     float dir = 1.0f;
-    GameObject potat;
+    public GameObject potat;
 
     private void Awake()
     {
@@ -27,6 +27,7 @@ public class Arrow : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                Debug.Log("Start Swing");
                 swing = true;
             }else if(Input.GetKeyUp(KeyCode.Space))
             { 
