@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pop : MonoBehaviour
 {
@@ -14,11 +16,17 @@ public class Pop : MonoBehaviour
 
     public bool canPop = true;
 
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI instructionsText;
+    public Slider powerBar;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer;
         timerActive = true;
+        instructionsText.text = instructions;
+        UpdatePowerBar();
     }
 
     // Update is called once per frame
@@ -35,13 +43,28 @@ public class Pop : MonoBehaviour
             {
                 timerActive = false;    //turn off timer
                 canPop = false;
+                timer = 0;
                 Debug.Log("return to main"); //return to main game
             }
+
+            UpdateTimer();
         }
     }
 
     public void AddPower(float value)
     {
         submittedPower += value;
+        UpdatePowerBar();
+    }
+
+    public void UpdateTimer()
+    {
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdatePowerBar()
+    {
+        powerBar.value = submittedPower;
     }
 }

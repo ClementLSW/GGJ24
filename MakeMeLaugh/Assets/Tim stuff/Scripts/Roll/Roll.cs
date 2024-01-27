@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Roll : MonoBehaviour
 {
@@ -12,11 +14,17 @@ public class Roll : MonoBehaviour
 
     public string instructions; //Instructions to display to the player
 
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI instructionsText;
+    public Slider powerBar;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer;
         timerActive = true;
+        instructionsText.text = instructions;
+        UpdatePowerBar();
     }
 
     // Update is called once per frame
@@ -32,13 +40,28 @@ public class Roll : MonoBehaviour
             if (timer <= 0)
             {
                 timerActive = false;    //turn off timer
+                timer = 0;
                 Debug.Log("return to main"); //return to main game
             }
+
+            UpdateTimer();
         }
     }
 
     public void UpdatePower(float newPower)
     {
         submittedPower = newPower;
+        UpdatePowerBar();
+    }
+
+    public void UpdateTimer()
+    {
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdatePowerBar()
+    {
+        powerBar.value = submittedPower;
     }
 }
