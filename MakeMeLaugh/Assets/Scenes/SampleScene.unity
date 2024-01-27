@@ -233,13 +233,14 @@ MonoBehaviour:
   tilemap: {fileID: 647190331}
   tilePosition: {x: 0, y: 0, z: 0}
   grid: {fileID: 240097148}
-  gameMaster: {fileID: 0}
+  gameMaster: {fileID: 974299892}
   isPlanting: 0
   plantPos: {x: 0, y: 0, z: 0}
   plantTargetHeight: 0
   plantCurrentHeight: 0
   growth_t: 0
   growthDelay: 0.1
+  potat: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
