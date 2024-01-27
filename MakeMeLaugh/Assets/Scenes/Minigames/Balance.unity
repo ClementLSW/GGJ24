@@ -3599,6 +3599,7 @@ MonoBehaviour:
   timerActive: 0
   power: 0
   submittedPower: 0
+  instructions: Deposit The Ball!
 --- !u!1 &1940587046
 GameObject:
   m_ObjectHideFlags: 0
