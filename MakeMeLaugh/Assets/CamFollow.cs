@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
     public Transform target; // The target object to follow
-    public float dampening = 5f; // The smoothness of the camera follow
+    public float dampening = 10f; // The smoothness of the camera follow
     public Vector3 offset;/* = new Vector3(0f, 2f, -5f);*/ // The offset from the target
 
     private void Start()
