@@ -10,6 +10,7 @@ public class Planter : MonoBehaviour
     public Tilemap tilemap;
     public Vector3Int tilePosition;
     [SerializeField] GridLayout grid;
+    public GameMaster gameMaster;
 
     public bool isPlanting = false;
     public Vector3Int plantPos = Vector3Int.zero;
@@ -18,9 +19,11 @@ public class Planter : MonoBehaviour
     public float growth_t = 0;
     public float growthDelay = 0.1f;
 
+    public yeet potat;
+
     private void Awake()
     {
-        //tilemap = GetComponent<Tilemap>();
+        potat = FindObjectOfType<yeet>();
     }
 
     public void Plant(Vector3 originTile)
@@ -43,10 +46,23 @@ public class Planter : MonoBehaviour
                 if(++plantCurrentHeight >= plantTargetHeight)
                 {
                     isPlanting = false;
+                    gameMaster.IncrementHi(plantCurrentHeight);
+                    gameMaster.IncrementGold(plantCurrentHeight / 2); // TODO: Fix magic numbers
                     plantTargetHeight = 0;
                     growth_t = 0;
+                    if(plantCurrentHeight < 384)
+                    {
+                        plantCurrentHeight = 0;
+                    }
+
+                    potat.ResetPotat();
                 }
                 growth_t = growthDelay;
+
+                if(plantCurrentHeight >= 384)
+                {
+                    Debug.Log("Win");
+                }
             }
 
             growth_t -= Time.deltaTime;

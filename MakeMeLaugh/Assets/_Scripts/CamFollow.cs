@@ -31,4 +31,5 @@ public class CamFollow : MonoBehaviour
         // Update the camera's position
         transform.position = smoothedPosition;
     }
+
 }
