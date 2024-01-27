@@ -74,4 +74,6 @@ crashlytics-build.properties
 /MakeMeLaugh/Logs/*
 /MakeMeLaugh/UserSettings/*
 /MakeMeLaugh/Temp/*
-/MakeMeLauge/Obj/*
+/MakeMeLaugh/obj/Debug/*
+MakeMeLaugh/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+MakeMeLaugh/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
