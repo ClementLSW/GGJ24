@@ -3,30 +3,62 @@ using System.Collections.Generic;
 using System.Data.Common;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+    Color error_red = new(255, 78, 78);
+
+    bool initialized = false;
+
     public List<Item> Boots;
     public List<Item> Fertilizers;
     public List<Item> Seeds;
 
-    private void Start()
-    {
-        
-    }
+    public TMP_Text BootNameLabel;
+    public TMP_Text FertilizerNameLabel;
+    public TMP_Text SeedNameLabel;
 
-    private void Update()
+    public TMP_Text BootDescLabel;
+    public TMP_Text FertilizerDescLabel;
+    public TMP_Text SeedDescLabel;
+
+    public Button bootBuyBtn;
+    public Button FertilizerBuyBtn;
+    public Button SeedBuyBtn;
+
+    public TMP_Text ErrorLabel;
+
+    GameMaster gamemaster;
+    UIManager ui;
+
+    private void Awake()
     {
-        
+        gamemaster = GetComponent<GameMaster>();
+        ui = GetComponent<UIManager>();
+        Boots = new List<Item>();
+        Fertilizers = new List<Item>();
+        Seeds = new List<Item>();
+
+        if (!initialized)
+        {
+            InitializeShop();
+        }
     }
 
     public void InitializeShop()
     {
-        Boots.Add(new Item("B_1", "Holey Boots", "This is a PoS", 10));
-        Boots.Add(new Item("B_2", "Georgie Boots", "You'll float too", 30));
-        Boots.Add(new Item("B_3", "Danksoles 9000", "hehe funny 42069", 69));
-        Boots.Add(new Item("B_4", "Boots McBootface", "Bootiest Boot to ever Boot", 100));
-        Boots.Add(new Item("B_5", "Yeet Feet Express", "Yeetus Fetus Deletus \n- DragonEngineer", 420));
+        Item i = null;
+        i = new Item("B_1", "Holey Boots", "This is a PoS", 10);
+        Boots.Add(i);
+        i = new Item("B_2", "Georgie Boots", "You'll float too", 30);
+        Boots.Add(i);
+        i = new Item("B_3", "Danksoles 9000", "hehe funny 42069", 69);
+        Boots.Add(i);
+        i = new Item("B_4", "Boots McBootface", "Bootiest Boot to ever Boot", 100);
+        Boots.Add(i);
+        i = new Item("B_5", "Yeet Feet Express", "Yeetus Fetus Deletus \n- DragonEngineer", 420);
+        Boots.Add(i);
 
         Fertilizers.Add(new Item("F_1", "Last Night's Left over", "Dinner wasn't the best...", 10));
         Fertilizers.Add(new Item("F_2", "Last Night's Dinner", "This was what you managed to eat", 30));
@@ -39,10 +71,115 @@ public class Shop : MonoBehaviour
         Seeds.Add(new Item("S_3", "Mashed Potato", "How does it even grow???", 69));
         Seeds.Add(new Item("S_4", "Not a Potato", "Potatoes, Tomatoes", 100));
         Seeds.Add(new Item("S_5", "Baked Potato", "BLAZE IT", 420));
+
+        initialized = true;
+        //UpdateShop();
+    }
+
+    public void BuyBoot()
+    {
+        Item nextBoot = Boots[gamemaster.BootLevel];
+
+        if(gamemaster.gold >= nextBoot.Cost)
+        {
+            gamemaster.gold -= nextBoot.Cost;
+            gamemaster.BootLevel++;
+            if (gamemaster.BootLevel >= Boots.Count)
+            {
+                BootNameLabel.color = error_red;
+                BootNameLabel.text = "Sold out";
+                BootDescLabel.text = "";
+                bootBuyBtn.interactable = false;
+            }
+            UpdateShop();
+        }
+        else
+        {
+            ErrorLabel.text = "Bro (Gender Neutral), you're broke.";
+        }
+    }
+
+    public void BuyFertilizer()
+    {
+        Item nextFertilizer = Fertilizers[gamemaster.FertilizerLevel];
+
+        if (gamemaster.gold >= nextFertilizer.Cost)
+        {
+            gamemaster.gold -= nextFertilizer.Cost;
+            gamemaster.FertilizerLevel++;
+            if (gamemaster.FertilizerLevel >= Fertilizers.Count)
+            {
+                FertilizerNameLabel.color = error_red;
+                FertilizerNameLabel.text = "Sold out";
+                FertilizerDescLabel.text = "";
+                FertilizerBuyBtn.interactable = false;
+            }
+            UpdateShop();
+        }
+        else
+        {
+            ErrorLabel.text = "Bro (Gender Neutral), you're broke.";
+        }
+    }
+
+    public void BuySeed()
+    {
+        Item nextSeed = Seeds[gamemaster.SeedLevel];
+
+        if (gamemaster.gold >= nextSeed.Cost)
+        {
+            gamemaster.gold -= nextSeed.Cost;
+            gamemaster.SeedLevel++;
+            if (gamemaster.SeedLevel >= Seeds.Count)
+            {
+                SeedNameLabel.color = error_red;
+                SeedNameLabel.text = "Sold out";
+                SeedDescLabel.text = "";
+                SeedBuyBtn.interactable = false;
+            }
+            UpdateShop();
+        }
+        else
+        {
+            ErrorLabel.text = "Bro (Gender Neutral), you're broke.";
+        }
+    }
+
+    public void OnEnable()
+    {
+        UpdateShop();
+    }
+
+    public void UpdateShop()
+    {
+        if(!initialized)
+        {
+            InitializeShop();
+        }
+
+        if(gamemaster.BootLevel < Boots.Count)
+        {
+            BootNameLabel.text = Boots[gamemaster.BootLevel].Name;
+            BootDescLabel.text = Boots[gamemaster.BootLevel].Description;
+        }
+
+        if(gamemaster.FertilizerLevel < Fertilizers.Count)
+        {
+            FertilizerNameLabel.text = Fertilizers[gamemaster.FertilizerLevel].Name;
+            FertilizerDescLabel.text = Fertilizers[gamemaster.FertilizerLevel].Description;
+        }
+
+        if(gamemaster.SeedLevel < Seeds.Count)
+        {
+            SeedNameLabel.text = Seeds[gamemaster.SeedLevel].Name;
+            SeedDescLabel.text = Seeds[gamemaster.SeedLevel].Description;
+        }
+
+        ui.UpdateUI();
     }
 }
 
-public class Item : MonoBehaviour
+public class Item
 {
     public string ID;
     public string Name;

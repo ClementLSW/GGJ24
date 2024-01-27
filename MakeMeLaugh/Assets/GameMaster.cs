@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
+    private bool Debug = true;
+
+    public int BootLevel;
+    public int FertilizerLevel;
+    public int SeedLevel;
+
     public int kicks;
     public int highest;
     public int gold;
@@ -12,9 +18,28 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
-        kicks= 0;
-        highest= 0;
-        gold= 0;
+        if (!Debug)
+        {
+            kicks= 0;
+            highest= 0;
+            gold= 0;
+
+            BootLevel = 0;
+            FertilizerLevel = 0;
+            SeedLevel = 0;
+        }
+        else
+        {
+            kicks = 0;
+            highest = 0;
+            gold = 1000000;
+
+            BootLevel = 0;
+            FertilizerLevel = 0;
+            SeedLevel = 0;
+        }
+
+        ui.UpdateUI();
     }
 
     public void ResetKicks()

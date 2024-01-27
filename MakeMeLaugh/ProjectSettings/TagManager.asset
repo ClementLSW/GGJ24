@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tilemap Foreground
+    uniqueID: 2718659973
+    locked: 0
   - name: UI
     uniqueID: 851662905
     locked: 0
