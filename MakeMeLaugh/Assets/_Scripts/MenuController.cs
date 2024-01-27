@@ -14,4 +14,9 @@ public class MenuController : MonoBehaviour
         //Load game scene
     }
 
+    public void ReturnToMenu()
+    { 
+        //Load Menu Scene
+    }
+    
 }
