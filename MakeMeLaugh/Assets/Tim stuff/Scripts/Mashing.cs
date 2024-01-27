@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mashing : MonoBehaviour
 {
@@ -19,11 +20,17 @@ public class Mashing : MonoBehaviour
 
     public string instructions; //Instructions to display to the player
 
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI instructionsText;
+    public Slider powerBar;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer;
         timerActive = true;
+        instructionsText.text = instructions;
+        UpdatePowerBar();
     }
 
     // Update is called once per frame
@@ -38,7 +45,9 @@ public class Mashing : MonoBehaviour
                 if (power > 0)
                 {
                     power -= powerDecrease;
-                    
+                    UpdatePowerBar();
+
+
                     if (power < 0)
                     {
                         power = 0;
@@ -50,12 +59,27 @@ public class Mashing : MonoBehaviour
             {
                 submittedPower = power;     //Determine the power to pass
                 timerActive = false;    //turn off timer
+                timer = 0;
             }
+
+            UpdateTimer();
         }
 
         if ((Input.GetKeyDown(inputKey) || Input.GetKeyDown(inputKey2)) && timerActive)
         {
             power += powerInput;
+            UpdatePowerBar();
         }
+    }
+
+    public void UpdateTimer()
+    {
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdatePowerBar()
+    {
+        powerBar.value = power;
     }
 }

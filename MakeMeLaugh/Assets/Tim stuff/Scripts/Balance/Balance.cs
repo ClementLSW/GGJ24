@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using TMPro;
+using UnityEngine.UI;
 
 public class Balance : MonoBehaviour
 {
@@ -14,11 +15,17 @@ public class Balance : MonoBehaviour
 
     public string instructions; //Instructions to display to the player
 
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI instructionsText;
+    public Slider powerBar;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer;
         timerActive = true;
+        instructionsText.text = instructions;
+        UpdatePowerBar();
     }
 
     // Update is called once per frame
@@ -40,13 +47,34 @@ public class Balance : MonoBehaviour
             {
                 timerActive = false;    //turn off timer
                 UpdatePower(0f);
+
+                timer = 0;
+
+                if (power < 0)
+                {
+                    power = 0;
+                }
             }
+
+            UpdateTimer();
         }
     }
 
     public void UpdatePower(float newPower)
     {
         submittedPower = newPower;
+        UpdatePowerBar();
         Debug.Log("return to main"); //return to main game
+    }
+
+    public void UpdateTimer()
+    {
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdatePowerBar()
+    {
+        powerBar.value = submittedPower;
     }
 }

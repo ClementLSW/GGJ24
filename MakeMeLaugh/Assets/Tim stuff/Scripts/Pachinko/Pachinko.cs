@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pachinko : MonoBehaviour
 {
@@ -24,12 +26,18 @@ public class Pachinko : MonoBehaviour
     public float timeoutTimer;
     public float maxTimeoutTimer;
 
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI instructionsText;
+    public Slider powerBar;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer; 
         timerActive = true;
         movementvector = new Vector3(moveSpeed, 0, 0);
+        instructionsText.text = instructions;
+        UpdatePowerBar();
     }
 
     // Update is called once per frame
@@ -54,7 +62,11 @@ public class Pachinko : MonoBehaviour
                 potato.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 timeoutTimer = maxTimeoutTimer;
                 timeoutTimerActive = true;
+
+                timer = 0;
             }
+
+            UpdateTimer();
         }
 
         if (movementActive)
@@ -79,14 +91,41 @@ public class Pachinko : MonoBehaviour
 
             if (timeoutTimer <= 0)
             {
-                UpdatePower(0f);
+                FinalUpdatePower(submittedPower);
+                timeoutTimer = 0;
             }
+
+            UpdateTimer2();
         }
     }
 
     public void UpdatePower(float newPower)
     { 
         submittedPower = newPower;
+        UpdatePowerBar();
+    }
+
+    public void FinalUpdatePower(float newPower)
+    {
+        submittedPower = newPower;
+        UpdatePowerBar();
         Debug.Log("return to main"); //return to main game
+    }
+
+    public void UpdateTimer()
+    {
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdateTimer2()
+    {
+        int seconds = Mathf.FloorToInt(timeoutTimer % 60);
+        timerText.text = string.Format("{0}", seconds);
+    }
+
+    public void UpdatePowerBar()
+    {
+        powerBar.value = submittedPower;
     }
 }
