@@ -14,8 +14,13 @@ public class yeet : MonoBehaviour
     public int bouncesLeft = 3;
 
     private Tilemap tilemap;
-
+    GameMaster gm;
     Rigidbody2D rb;
+
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameMaster>();
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,7 +36,7 @@ public class yeet : MonoBehaviour
         if (canYeet)
         {
             yeetAngle = arrow.GetAngle();
-            // yeetForce = Random.Range(1.0f, 10.0f) ; // TODO: Change to actually getting a value based on Minigames;
+            yeetForce = Random.Range(1.0f, 10.0f) ; // TODO: Change to actually getting a value based on Minigames;
             YEET();
         }
     }
@@ -43,15 +48,17 @@ public class yeet : MonoBehaviour
 
     public void YEET()
     {
+        float YOTED_V = (1.0f + (0.2f * gm.BootLevel)) * yeetForce;
+
         Vector2 yeetDir = new Vector2(
-            yeetForce * Mathf.Cos(Mathf.Deg2Rad * yeetAngle),
-            yeetForce * Mathf.Sin(Mathf.Deg2Rad * yeetAngle)
+            YOTED_V * Mathf.Cos(Mathf.Deg2Rad * yeetAngle),
+            YOTED_V * Mathf.Sin(Mathf.Deg2Rad * yeetAngle)
             );
         Debug.Log(yeetAngle);
-        Debug.Log(yeetForce);
+        Debug.Log(YOTED_V);
         Debug.Log(yeetDir);
         rb.AddForce(yeetDir, ForceMode2D.Impulse);
-        rb.AddTorque(-yeetForce);
+        rb.AddTorque(-YOTED_V);
 
         canYeet = false;
         hasYeeted = true;
@@ -71,10 +78,12 @@ public class yeet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (hasYeeted)
         {
+            Debug.Log("Bounces left :" + (bouncesLeft - 1).ToString());
             // Check if the collision is with the Tilemap
-            if (collision.gameObject.GetComponent<TilemapCollider2D>() == tilemap.GetComponent<TilemapCollider2D>())
+            if (collision.gameObject.name.Equals("Farm"))
             {
                 if(bouncesLeft<=0)
                 {

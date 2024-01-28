@@ -33,6 +33,8 @@ public class Planter : MonoBehaviour
         plantPos = tilePosition;
         plantTargetHeight = tilePosition.x/4;
 
+        plantTargetHeight += Mathf.RoundToInt(plantTargetHeight * (0.2f * gameMaster.FertilizerLevel));
+
         isPlanting = true;
     }
 
@@ -47,7 +49,9 @@ public class Planter : MonoBehaviour
                 {
                     isPlanting = false;
                     gameMaster.IncrementHi(plantCurrentHeight);
-                    gameMaster.IncrementGold(plantCurrentHeight / 2); // TODO: Fix magic numbers
+                    int g = plantCurrentHeight / 2;
+                    g = Mathf.RoundToInt(g + (g * 0.2f * gameMaster.SeedLevel));
+                    gameMaster.IncrementGold(g);
                     plantTargetHeight = 0;
                     growth_t = 0;
                     if(plantCurrentHeight < 384)
@@ -62,6 +66,7 @@ public class Planter : MonoBehaviour
                 if(plantCurrentHeight >= 384)
                 {
                     Debug.Log("Win");
+                    gameMaster.GameOver();
                 }
             }
 

@@ -11,6 +11,9 @@ public class Shop : MonoBehaviour
 
     bool initialized = false;
 
+    public SpriteRenderer BootObject;
+    public SpriteRenderer PotatObject;
+
     public List<Item> Boots;
     public List<Item> Fertilizers;
     public List<Item> Seeds;
@@ -96,6 +99,7 @@ public class Shop : MonoBehaviour
         {
             gamemaster.gold -= nextBoot.Cost;
             gamemaster.BootLevel++;
+            BootObject.sprite = B_Sprites[gamemaster.BootLevel - 1];
             if (gamemaster.BootLevel >= Boots.Count)
             {
                 BootNameLabel.color = error_red;
@@ -146,6 +150,7 @@ public class Shop : MonoBehaviour
         {
             gamemaster.gold -= nextSeed.Cost;
             gamemaster.SeedLevel++;
+            PotatObject.sprite = S_Sprites[gamemaster.SeedLevel-1];
             if (gamemaster.SeedLevel >= Seeds.Count)
             {
                 SeedNameLabel.color = error_red;
@@ -180,6 +185,7 @@ public class Shop : MonoBehaviour
             BootNameLabel.text = Boots[gamemaster.BootLevel].Name;
             BootDescLabel.text = Boots[gamemaster.BootLevel].Description;
             BootCostLabel.text = $"$ {Boots[gamemaster.BootLevel].Cost}";
+
             B_Sprite.sprite = B_Sprites[gamemaster.BootLevel];
         }
 

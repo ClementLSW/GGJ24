@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
-    private bool Debug = true;
+    private bool Debug = false;
 
     public int BootLevel;
     public int FertilizerLevel;
@@ -90,5 +91,6 @@ public class GameMaster : MonoBehaviour
     public void GameOver()
     {
         // Show Win State screen;
+        SceneManager.LoadScene("GameComplete");
     }
 }
