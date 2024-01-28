@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2f6cab00-7270-4f13-ac0d-b148009ba2a1}">
+		<property name="assetPath">
+			<value>AGRICULTURAL EXCHANGE Electric Piano.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>19.199999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8bc0fd9-3999-4386-bf56-cd1ee36a5b60}</destination>
+		</relationship>
+	</object>
+</objects>
