@@ -17,6 +17,7 @@ public class SceneUtils : MonoBehaviour
     public static void UnloadLastScene()
     {
         SceneManager.UnloadSceneAsync(LoadedScenes.Pop());
+        SceneManager.SetActiveScene(LoadedScenes.Last());
     }
     
 }
