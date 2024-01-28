@@ -24175,6 +24175,9 @@ MonoBehaviour:
   BootDescLabel: {fileID: 1429616329}
   FertilizerDescLabel: {fileID: 1062730576}
   SeedDescLabel: {fileID: 1417864305}
+  bootBuyBtn: {fileID: 2088943924}
+  FertilizerBuyBtn: {fileID: 1852767194}
+  SeedBuyBtn: {fileID: 1471081795}
   ErrorLabel: {fileID: 0}
 --- !u!1 &995152347
 GameObject:
@@ -25315,7 +25318,7 @@ GameObject:
   - component: {fileID: 1471081796}
   - component: {fileID: 1471081795}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25384,7 +25387,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1471081796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 974299894}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuySeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1471081796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25941,7 +25956,7 @@ GameObject:
   - component: {fileID: 1852767195}
   - component: {fileID: 1852767194}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Fertilizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26010,7 +26025,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1852767195}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 974299894}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyFertilizer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1852767195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26261,7 +26288,7 @@ GameObject:
   - component: {fileID: 2088943925}
   - component: {fileID: 2088943924}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Boot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26330,7 +26357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2088943925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 974299894}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyBoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2088943925
 MonoBehaviour:
   m_ObjectHideFlags: 0
