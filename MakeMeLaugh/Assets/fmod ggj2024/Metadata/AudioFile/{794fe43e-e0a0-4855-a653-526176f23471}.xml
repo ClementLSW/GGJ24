@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{794fe43e-e0a0-4855-a653-526176f23471}">
+		<property name="assetPath">
+			<value>TO THE MOON Synths.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14.4</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8bc0fd9-3999-4386-bf56-cd1ee36a5b60}</destination>
+		</relationship>
+	</object>
+</objects>
