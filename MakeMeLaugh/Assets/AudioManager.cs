@@ -8,6 +8,13 @@ using FMODUnityResonance;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Volume")]
+    [Range(0,1)]
+    public float musicVolume = 1;
+    public VolumeControl vc;
+
+    private Bus musicBus;
+
     private List<EventInstance> eventInstances;
     private EventInstance musicEventInstance;
 
@@ -19,10 +26,19 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
         eventInstances = new List<EventInstance>();
+        musicBus = RuntimeManager.GetBus("bus:/Music");
     }
 
     private void Start() {
+        if(GameObject.Find("VolumeControl")) {
+            vc = GameObject.Find("VolumeControl").GetComponent<VolumeControl>();
+        }
         InitializeMusic(FMODEvents.instance.music);
+    }
+
+    private void Update() {
+        musicVolume = vc.musicvolume;
+        musicBus.setVolume(musicVolume);
     }
 
     private void InitializeMusic(EventReference musicEventReference) {
