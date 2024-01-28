@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 91de504825c2ace44abf1fe957579d7c
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Minigames/AFK.unity
+    guid: f4bebafb746a4364cbedcc4d5589be14
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Balance.unity
+    guid: 8de55be6f53540c4bbb4521bdfc6cc78
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Fling.unity
+    guid: 252b36bc53a46134a913c7b14e47cad1
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Mashing.unity
+    guid: c4bd7b488aaed5845b11f1d64b234fa1
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Pachinko.unity
+    guid: 9e4398a252021b74d9f58e28829157f7
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Pop.unity
+    guid: e36e9e2b5149e4f48ac01fb6a1014d7f
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Roll.unity
+    guid: e4646cab5d7114444841afef6f6071c0
+  - enabled: 1
+    path: Assets/Scenes/Minigames/RPS.unity
+    guid: 6936b23a8a8cb154aa6df9926276848b
   m_configObjects: {}

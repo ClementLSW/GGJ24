@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,13 @@ public class SceneUtils : MonoBehaviour
     public static void LoadSceneAdditive(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        LoadedScenes.Push(SceneManager.GetActiveScene());
+    }
+
+    public static void LoadSceneReplace(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        LoadedScenes.Clear();
         LoadedScenes.Push(SceneManager.GetActiveScene());
     }
 

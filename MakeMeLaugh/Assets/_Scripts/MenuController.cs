@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour
 
     public void PlayGame()
     { 
-        //Load game scene
+        SceneUtils.LoadSceneReplace("SampleScene");
     }
 
     public void ReturnToMenu()
