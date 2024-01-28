@@ -57,7 +57,7 @@ public class Mashing : MonoBehaviour
 
             if (timer <= 0)
             {
-                submittedPower = power;     //Determine the power to pass
+                submittedPower = Mathf.Clamp01(power);     //Determine the power to pass
                 timerActive = false;    //turn off timer
                 timer = 0;
                 
