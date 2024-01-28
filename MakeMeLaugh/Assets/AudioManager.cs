@@ -32,12 +32,12 @@ public class AudioManager : MonoBehaviour
     private void Start() {
         if(GameObject.Find("VolumeControl")) {
             vc = GameObject.Find("VolumeControl").GetComponent<VolumeControl>();
+            musicVolume = vc.musicvolume;
         }
         InitializeMusic(FMODEvents.instance.music);
     }
 
     private void Update() {
-        musicVolume = vc.musicvolume;
         musicBus.setVolume(musicVolume);
     }
 
