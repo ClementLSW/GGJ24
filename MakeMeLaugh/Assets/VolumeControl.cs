@@ -8,7 +8,14 @@ public class VolumeControl : MonoBehaviour
     public float musicvolume;
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (instance == null){
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+        
         musicvolume = 1;
     }
 
