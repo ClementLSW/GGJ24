@@ -15,6 +15,14 @@ public class Shop : MonoBehaviour
     public List<Item> Fertilizers;
     public List<Item> Seeds;
 
+    public List<Sprite> B_Sprites;
+    public List<Sprite> F_Sprites;
+    public List<Sprite> S_Sprites;
+
+    public Image B_Sprite;
+    public Image F_Sprite;
+    public Image S_Sprite;
+
     public TMP_Text BootNameLabel;
     public TMP_Text FertilizerNameLabel;
     public TMP_Text SeedNameLabel;
@@ -90,6 +98,7 @@ public class Shop : MonoBehaviour
                 BootNameLabel.text = "Sold out";
                 BootDescLabel.text = "";
                 bootBuyBtn.interactable = false;
+                B_Sprite.sprite = null;
             }
             UpdateShop();
         }
@@ -113,6 +122,7 @@ public class Shop : MonoBehaviour
                 FertilizerNameLabel.text = "Sold out";
                 FertilizerDescLabel.text = "";
                 FertilizerBuyBtn.interactable = false;
+                F_Sprite.sprite = null;
             }
             UpdateShop();
         }
@@ -136,6 +146,7 @@ public class Shop : MonoBehaviour
                 SeedNameLabel.text = "Sold out";
                 SeedDescLabel.text = "";
                 SeedBuyBtn.interactable = false;
+                S_Sprite.sprite = null;
             }
             UpdateShop();
         }
@@ -161,18 +172,21 @@ public class Shop : MonoBehaviour
         {
             BootNameLabel.text = Boots[gamemaster.BootLevel].Name;
             BootDescLabel.text = Boots[gamemaster.BootLevel].Description;
+            B_Sprite.sprite = B_Sprites[gamemaster.BootLevel];
         }
 
         if(gamemaster.FertilizerLevel < Fertilizers.Count)
         {
             FertilizerNameLabel.text = Fertilizers[gamemaster.FertilizerLevel].Name;
             FertilizerDescLabel.text = Fertilizers[gamemaster.FertilizerLevel].Description;
+            F_Sprite.sprite = F_Sprites[gamemaster.FertilizerLevel];
         }
 
         if(gamemaster.SeedLevel < Seeds.Count)
         {
             SeedNameLabel.text = Seeds[gamemaster.SeedLevel].Name;
             SeedDescLabel.text = Seeds[gamemaster.SeedLevel].Description;
+            S_Sprite.sprite = S_Sprites[gamemaster.SeedLevel];
         }
 
         ui.UpdateUI();
