@@ -47,6 +47,9 @@ public class Balance : MonoBehaviour
             {
                 timerActive = false;    //turn off timer
                 UpdatePower(0f);
+                
+                FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+                FindObjectOfType<Arrow>().hasResponded = true;
 
                 timer = 0;
 

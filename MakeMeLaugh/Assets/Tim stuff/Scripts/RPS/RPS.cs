@@ -47,6 +47,8 @@ public class RPS : MonoBehaviour
                 timerActive = false;    //turn off timer
                 submittedPower = 0;
                 timer = 0;
+                FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+                FindObjectOfType<Arrow>().hasResponded = true;
                 Debug.Log("return to main"); //return to main game if no choice is made
             }
 
@@ -62,6 +64,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Tie!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -71,6 +75,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Lose!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -80,6 +86,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Win!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
     }
@@ -92,6 +100,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Win!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -101,6 +111,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Tie!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -110,6 +122,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Lose!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
     }
@@ -122,6 +136,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Lose!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -131,6 +147,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Win!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
 
@@ -140,6 +158,8 @@ public class RPS : MonoBehaviour
             UpdatePowerBar();
             timerActive = false;    //turn off timer
             instructionsText.text = "Tie!";
+            FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+            FindObjectOfType<Arrow>().hasResponded = true;
             Debug.Log("return to main"); //return to main game
         }
     }

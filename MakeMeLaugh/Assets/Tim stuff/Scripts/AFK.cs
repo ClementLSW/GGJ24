@@ -26,6 +26,7 @@ public class AFK : MonoBehaviour
         timer = maxTimer;
         timerActive = true;
         instructionsText.text = instructions;
+        //FindObjectOfType<CamFollow>().target = GameObject.Find("Potat_AFK").transform;
     }
 
     // Update is called once per frame
@@ -50,6 +51,9 @@ public class AFK : MonoBehaviour
                 submittedPower = power;     //Determine the power to pass
                 timerActive = false;    //turn off timer
                 timer = 0;
+                
+                FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+                FindObjectOfType<Arrow>().hasResponded = true;
 
                 if (power < 0)
                 {

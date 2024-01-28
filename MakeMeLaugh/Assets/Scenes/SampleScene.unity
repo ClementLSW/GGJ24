@@ -423,6 +423,17 @@ MonoBehaviour:
   allowInput: 1
   potat: {fileID: 1399350773}
   gameMaster: {fileID: 974299892}
+  scenes:
+  - AFK
+  - Balance
+  - Fling
+  - Mashing
+  - Pachinko
+  - Pop
+  - Roll
+  - RPS
+  hasResponded: 0
+  trackCamera: {fileID: 519420031}
 --- !u!4 &233697392
 Transform:
   m_ObjectHideFlags: 0

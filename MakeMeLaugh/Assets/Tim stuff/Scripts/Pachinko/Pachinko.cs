@@ -64,6 +64,7 @@ public class Pachinko : MonoBehaviour
                 timeoutTimerActive = true;
 
                 timer = 0;
+                
             }
 
             UpdateTimer();
@@ -109,6 +110,8 @@ public class Pachinko : MonoBehaviour
     {
         submittedPower = newPower;
         UpdatePowerBar();
+        FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+        FindObjectOfType<Arrow>().hasResponded = true;
         Debug.Log("return to main"); //return to main game
     }
 

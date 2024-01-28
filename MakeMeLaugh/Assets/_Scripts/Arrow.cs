@@ -15,6 +15,13 @@ public class Arrow : MonoBehaviour
     public GameObject potat;
     public GameMaster gameMaster;
 
+    [SerializeField] private List<string> scenes;
+    public bool hasResponded = false;
+
+    [SerializeField] private Camera trackCamera;
+
+    private Coroutine currentCoroutine;
+
     private void Awake()
     {
         potat = GameObject.Find("Potat"); //KEKW DigiPen level code btw
@@ -33,8 +40,11 @@ public class Arrow : MonoBehaviour
             }else if(Input.GetKeyUp(KeyCode.Space))
             { 
                 swing = false;
-                potat.GetComponent<yeet>().canYeet = true;
-                gameMaster.IncrementKicks();
+                if (currentCoroutine == null)
+                {
+                    currentCoroutine = StartCoroutine(WaitForResponse());
+                }
+
             }else if (Input.GetKeyDown(KeyCode.R))
             {
                 Reset();
@@ -62,6 +72,28 @@ public class Arrow : MonoBehaviour
                 dir = 1.0f;
             }
         }
+    }
+
+    IEnumerator WaitForResponse()
+    {
+        //potat.SetActive(false);
+        trackCamera.enabled = false;
+        var sceneToLoad = scenes[Random.Range(0, scenes.Count)];
+        SceneUtils.LoadSceneAdditive(sceneToLoad);
+        //SceneUtils.LoadSceneAdditive(scenes[Random.Range(0, scenes.Count)]);
+        while (!hasResponded)
+        {
+            yield return null;
+        }
+
+        //FindObjectOfType<CamFollow>().target = potat.transform;
+        //potat.SetActive(true);
+        trackCamera.enabled = true;
+        SceneUtils.UnloadScene(sceneToLoad);
+        potat.GetComponent<yeet>().canYeet = true;
+        gameMaster.IncrementKicks();
+        currentCoroutine = null;
+        hasResponded = false;
     }
 
     public void Reset()

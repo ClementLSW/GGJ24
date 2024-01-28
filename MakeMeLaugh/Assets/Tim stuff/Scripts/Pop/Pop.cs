@@ -44,6 +44,9 @@ public class Pop : MonoBehaviour
                 timerActive = false;    //turn off timer
                 canPop = false;
                 timer = 0;
+                
+                FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+                FindObjectOfType<Arrow>().hasResponded = true;
                 Debug.Log("return to main"); //return to main game
             }
 

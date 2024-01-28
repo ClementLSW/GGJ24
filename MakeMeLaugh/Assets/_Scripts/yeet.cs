@@ -41,7 +41,7 @@ public class yeet : MonoBehaviour
         }
     }
 
-    private void SetYeetForce(float val)
+    public void SetYeetForce(float val)
     {
         yeetForce = val;
     }

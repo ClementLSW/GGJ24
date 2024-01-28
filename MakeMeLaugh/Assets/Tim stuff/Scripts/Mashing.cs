@@ -60,6 +60,9 @@ public class Mashing : MonoBehaviour
                 submittedPower = power;     //Determine the power to pass
                 timerActive = false;    //turn off timer
                 timer = 0;
+                
+                FindObjectOfType<yeet>().SetYeetForce(submittedPower);
+                FindObjectOfType<Arrow>().hasResponded = true;
             }
 
             UpdateTimer();
