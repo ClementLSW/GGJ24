@@ -31,6 +31,10 @@ public class Shop : MonoBehaviour
     public TMP_Text FertilizerDescLabel;
     public TMP_Text SeedDescLabel;
 
+    public TMP_Text BootCostLabel;
+    public TMP_Text FertilizerCostLabel;
+    public TMP_Text SeedCostLabel;
+
     public Button bootBuyBtn;
     public Button FertilizerBuyBtn;
     public Button SeedBuyBtn;
@@ -97,8 +101,9 @@ public class Shop : MonoBehaviour
                 BootNameLabel.color = error_red;
                 BootNameLabel.text = "Sold out";
                 BootDescLabel.text = "";
+                BootCostLabel.text = "";
                 bootBuyBtn.interactable = false;
-                B_Sprite.sprite = null;
+                B_Sprite.color = new Color(0, 0, 0, 0);
             }
             UpdateShop();
         }
@@ -121,8 +126,9 @@ public class Shop : MonoBehaviour
                 FertilizerNameLabel.color = error_red;
                 FertilizerNameLabel.text = "Sold out";
                 FertilizerDescLabel.text = "";
+                FertilizerCostLabel.text = "";
                 FertilizerBuyBtn.interactable = false;
-                F_Sprite.sprite = null;
+                F_Sprite.color = new Color(0,0,0,0);
             }
             UpdateShop();
         }
@@ -145,8 +151,9 @@ public class Shop : MonoBehaviour
                 SeedNameLabel.color = error_red;
                 SeedNameLabel.text = "Sold out";
                 SeedDescLabel.text = "";
+                SeedCostLabel.text = "";
                 SeedBuyBtn.interactable = false;
-                S_Sprite.sprite = null;
+                S_Sprite.color = new Color(0, 0, 0, 0);
             }
             UpdateShop();
         }
@@ -172,6 +179,7 @@ public class Shop : MonoBehaviour
         {
             BootNameLabel.text = Boots[gamemaster.BootLevel].Name;
             BootDescLabel.text = Boots[gamemaster.BootLevel].Description;
+            BootCostLabel.text = $"$ {Boots[gamemaster.BootLevel].Cost}";
             B_Sprite.sprite = B_Sprites[gamemaster.BootLevel];
         }
 
@@ -179,6 +187,7 @@ public class Shop : MonoBehaviour
         {
             FertilizerNameLabel.text = Fertilizers[gamemaster.FertilizerLevel].Name;
             FertilizerDescLabel.text = Fertilizers[gamemaster.FertilizerLevel].Description;
+            FertilizerCostLabel.text = $"$ {Fertilizers[gamemaster.FertilizerLevel].Cost}";
             F_Sprite.sprite = F_Sprites[gamemaster.FertilizerLevel];
         }
 
@@ -186,6 +195,7 @@ public class Shop : MonoBehaviour
         {
             SeedNameLabel.text = Seeds[gamemaster.SeedLevel].Name;
             SeedDescLabel.text = Seeds[gamemaster.SeedLevel].Description;
+            SeedCostLabel.text = $"$ {Seeds[gamemaster.SeedLevel].Cost}";
             S_Sprite.sprite = S_Sprites[gamemaster.SeedLevel];
         }
 

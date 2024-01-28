@@ -15,6 +15,7 @@ public class GameMaster : MonoBehaviour
     public int gold;
 
     public UIManager ui;
+    public GameObject shop;
 
     private void Awake()
     {
@@ -40,6 +41,26 @@ public class GameMaster : MonoBehaviour
         }
 
         ui.UpdateUI();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ToggleShop();
+        }
+    }
+
+    private void ToggleShop()
+    {
+        if (shop.activeInHierarchy) 
+        {
+            shop.SetActive(false);
+        }
+        else
+        {
+            shop.SetActive(true);
+        }
     }
 
     public void ResetKicks()
