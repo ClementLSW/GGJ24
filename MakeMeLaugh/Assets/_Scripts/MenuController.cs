@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
 
     public void ReturnToMenu()
     { 
-        //Load Menu Scene
+        SceneUtils.LoadSceneReplace("MainMenu");
     }
     
 }
